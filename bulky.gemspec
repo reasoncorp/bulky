@@ -17,9 +17,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails",  "~> 3.2.8"
   s.add_dependency "resque", "~> 1.22"
+  s.add_dependency "haml",   "~> 3.1"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "mysql2",           "~> 0.3.11"
   s.add_development_dependency "rspec-rails",      "~> 2.11.0"
-  s.add_development_dependency "database_cleaner", "~> 0.8.0"
+  s.add_development_dependency "database_cleaner", ">= 0.8.0"
 end

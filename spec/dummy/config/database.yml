@@ -1,4 +1,7 @@
-test:
+test: &test
   adapter: mysql2
   password: rubyr3d!
   database: bulky_test
+
+development:
+  <<: *test

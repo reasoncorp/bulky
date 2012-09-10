@@ -1,4 +1,3 @@
-require "resque"
 require "bulky/engine"
 
 module Bulky

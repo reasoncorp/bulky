@@ -1,0 +1,7 @@
+%h1 Bulky
+
+= form_for :bulk, url: bulky_update_path(model: params[:model]), html: {method: :put} do |f|
+  %p
+    = f.select :attribute, whitelisted_attributes_collection(model), {include_blank: "Choose an Attribute"},
+      onchange: "document.getElementById('bulk_value').name = 'bulk[' + this.value + ']'"
+    = f.text_field :value
