@@ -15,7 +15,7 @@ class Bulky::UpdatesController < ApplicationController
     end
 
     Bulky.enqueue_update(model, ids, params[:bulk])
-    redirect_to bulky_edit_path(model: params[:model]), notice: I18n.t('flash.notice.update_enqueue')
+    redirect_to bulky_edit_path(model: params[:model]), notice: I18n.t('flash.notice.enqueue_update')
   end
 
   private
@@ -25,7 +25,7 @@ class Bulky::UpdatesController < ApplicationController
   end
   
   def ids
-    Bulky.parse_ids(params[:ids])
+    params[:ids].gsub("\n", ',').split(',').reject(&:blank?)
   end
 
 end

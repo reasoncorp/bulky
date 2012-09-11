@@ -1,5 +1,7 @@
 en:
   flash:
+    notice:
+      enqueue_update: "Bulk updated has been scheduled successfully."
     alert:
       blank_ids: "IDs cannot be blank."
       bulk_not_hash: "Bulk update options are not in a reconized format (must be a hash)."
