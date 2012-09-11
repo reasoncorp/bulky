@@ -4,6 +4,8 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rails/test_help"
 require "rspec/rails"
+require "capybara/rspec"
+require "capybara/rails"
 require "database_cleaner"
 
 Rails.backtrace_cleaner.remove_silencers!
@@ -39,6 +41,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Resque.remove_queue(Bulky::Updater::QUEUE)
   end
 
 end

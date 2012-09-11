@@ -1,0 +1,5 @@
+en:
+  flash:
+    alert:
+      blank_ids: "IDs cannot be blank."
+      bulk_not_hash: "Bulk update options are not in a reconized format (must be a hash)."

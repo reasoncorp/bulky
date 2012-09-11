@@ -2,8 +2,12 @@ require 'spec_helper'
 
 describe Bulky::Updater do
 
-  it "has bulky_updates as it's queue name" do
-    Bulky::Updater.instance_variable_get(:@queue).should eq(:bulky_updates)
+  it "has bulky_updates as it's QUEUE" do
+    Bulky::Updater::QUEUE.should eq(:bulky_updates)
+  end
+
+  it "uses the QUEUE constant to set the :@queue class instance variable" do
+    Bulky::Updater.instance_variable_get(:@queue).should eq(Bulky::Updater::QUEUE)
   end
 
   describe ".perform" do 
