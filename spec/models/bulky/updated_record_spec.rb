@@ -15,28 +15,10 @@ describe Bulky::UpdatedRecord do
       expect(record.errors[:bulk_update_id]).to include("can't be blank")
     end
 
-    it "validates presence of updatable_type" do
-      record.updatable_type = nil
+    it "validates presence of updatable" do
+      record.updatable = nil
       record.valid?
-      expect(record.errors[:updatable_type]).to include("can't be blank")
-    end
-
-    it "validates presence of updatable_id" do
-      record.updatable_id = nil
-      record.valid?
-      expect(record.errors[:updatable_id]).to include("can't be blank")
-    end
-
-    it "validates presence of updatable_changes" do
-      record.updatable_id = nil
-      record.valid?
-      expect(record.errors[:updatable_changes]).to include("can't be blank")
-    end
-
-    it "validates updatable_changes is a hash" do
-      record.updatable_changes = "not a hash"
-      record.valid?
-      expect(record.errors[:updatable_changes]).to include("must be a hash")
+      expect(record.errors[:updatable]).to include("can't be blank")
     end
   end
 
@@ -59,7 +41,7 @@ describe Bulky::UpdatedRecord do
       record.updatable_id      = 1
       record.updatable_type    = 'Account'
       record.updatable_changes = {contact: [nil, 'Awesome-o-tron']}
-      record.save!
+      record.save(validate: false) # i know updatable can't be blank...
       record.reload
       record.updatable_changes.should eq(contact: [nil, 'Awesome-o-tron'])
     end

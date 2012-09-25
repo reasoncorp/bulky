@@ -37,11 +37,19 @@ describe Bulky::BulkUpdate do
 
   describe "serialization" do
     it "serializes updates as a hash" do
-      update.ids = "1"
+      update.ids = [1]
       update.updates = {foo: 'on you'}
       update.save!
       update.reload
       update.updates.should eq(foo: 'on you')
+    end
+
+    it "serializes ids as an array" do
+      update.ids = [1,2,3,4]
+      update.updates = {foo: 'on you'}
+      update.save!
+      update.reload
+      update.ids.should eq([1,2,3,4])
     end
   end
 end

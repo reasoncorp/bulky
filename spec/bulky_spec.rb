@@ -6,9 +6,13 @@ describe Bulky do
   let(:updates) { {"company" => "Awesome-O Inc."} }
 
   describe ".enqueue_update" do
+    before :each do 
+      Bulky.stub(:log_bulk_update).and_return(mock('BulkUpdate', id: 5, updates: updates))
+    end
+
     it "will enqueue a Bulky::Update with the class and updates for each id provided" do
-      Resque.should_receive(:enqueue).with(Bulky::Updater, 'Account', 10, updates)
-      Resque.should_receive(:enqueue).with(Bulky::Updater, 'Account', 25, updates)
+      Resque.should_receive(:enqueue).with(Bulky::Updater, 'Account', 10, 5)
+      Resque.should_receive(:enqueue).with(Bulky::Updater, 'Account', 25, 5)
       Bulky.enqueue_update(Account, ids, updates)
     end
 

@@ -4,10 +4,10 @@ module Bulky
   extend self
   
   def enqueue_update(model, ids, updates)
-    log_bulk_update(ids, updates)
+    bulk_update = log_bulk_update(ids, updates)
 
     ids.each do |update_id|
-      Resque.enqueue(Bulky::Updater, model.name, update_id, updates)
+      Resque.enqueue(Bulky::Updater, model.name, update_id, bulk_update.id)
     end
   end
 

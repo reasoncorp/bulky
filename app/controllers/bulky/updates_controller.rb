@@ -25,7 +25,7 @@ class Bulky::UpdatesController < ApplicationController
   end
   
   def ids
-    params[:ids].gsub("\n", ',').split(',').reject(&:blank?)
+    Bulky.parse_ids(params[:ids])
   end
 
 end
