@@ -45,3 +45,8 @@ RSpec.configure do |config|
   end
 
 end
+
+def process_bulky_queue_item
+  klass, args = Resque.reserve(Bulky::Updater::QUEUE)
+  klass.perform(*args)
+end

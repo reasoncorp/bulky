@@ -1,4 +1,2 @@
-require 'spec_helper' do
+require 'spec_helper'
 
-
-end

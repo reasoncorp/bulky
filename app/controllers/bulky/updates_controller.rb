@@ -28,4 +28,12 @@ class Bulky::UpdatesController < ApplicationController
     Bulky.parse_ids(params[:ids])
   end
 
+  def params
+    @params ||= delete_blank(super)
+  end
+
+  def delete_blank(hash)
+    hash.delete_if { |k,v| v.empty? or Hash === v && delete_blank(v).empty? }
+  end
+
 end

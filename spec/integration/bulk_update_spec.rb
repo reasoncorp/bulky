@@ -13,10 +13,7 @@ describe "Bulk Updates" do
   describe "Bulky.enqueue_update" do
     it "will bulk update all the accounts" do
       Bulky.enqueue_update(Account, accounts.map(&:id), {"contact" => "Awesome-o-tron"})
-      3.times do
-        klass, args = Resque.reserve(Bulky::Updater::QUEUE)
-        klass.perform(*args)
-      end
+      3.times { process_bulky_queue_item }
       Account.all.map(&:contact).uniq.should eq(['Awesome-o-tron'])
     end
   end
