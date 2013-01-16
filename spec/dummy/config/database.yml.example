@@ -1,6 +1,6 @@
 test: &test
   adapter: mysql2
-  password: rubyr3d!
+  password: some_password
   database: bulky_test
 
 development:
