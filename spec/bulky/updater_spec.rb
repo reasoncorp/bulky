@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Bulky::Updater do
 
-  it "has bulky_updates as it's QUEUE" do
-    Bulky::Updater::QUEUE.should eq(:bulky_updates)
+  it "has '(application name)_bulky_updates' as its QUEUE" do
+    Bulky::Updater::QUEUE.should eq(:dummy_bulky_updates)
   end
 
   it "uses the QUEUE constant to set the :@queue class instance variable" do

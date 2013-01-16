@@ -1,8 +1,6 @@
 module Bulky
   class Updater
 
-    QUEUE = @queue = :bulky_updates
-
     def self.perform(model_name, update_id, bulk_update_id)
       model = model_name.constantize.find(update_id)
       new(model, bulk_update_id).update!
