@@ -1,7 +1,19 @@
-test: &test
+base: &base
   adapter: mysql2
-  password: some_password
-  database: bulky_test
+  host: localhost
+  user: root
+  password:
+  pool: 5
+  timeout: 5000
 
 development:
-  <<: *test
+  database: taxscribe_dev
+  <<: *base
+
+test:
+  database: taxscribe_test
+  <<: *base
+
+production:
+  database: taxscribe_pro
+  <<: *base
