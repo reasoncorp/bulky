@@ -17,7 +17,7 @@ describe Bulky do
     end
 
     it "will log that it has started a bulk update" do
-      Bulky.should_receive(:log_bulk_update).with([10,25], updates)
+      Bulky.should_receive(:log_bulk_update).with([10,25], updates, nil)
       Resque.stub(:enqueue)
       Bulky.enqueue_update(Account, ids, updates)
     end
@@ -40,7 +40,7 @@ describe Bulky do
   end
 
   describe ".log_bulk_update" do
-    let(:log) { Bulky.log_bulk_update(ids, updates) }
+    let(:log) { Bulky.log_bulk_update(ids, updates, nil) }
 
     it "creates a bulk update entry" do
       log.should be_persisted

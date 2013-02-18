@@ -1,6 +1,47 @@
 require 'spec_helper'
 
 describe Bulky::UpdatesController do
+  describe "index and show actions" do
+    
+    before :each do
+      Bulky::BulkUpdate.destroy_all
+      FactoryGirl.create(:bulky_bulk_update_with_bulky_updated_records)
+    end
+
+    describe "#index" do
+      let(:update) { Bulky::BulkUpdate.first }
+
+      it "responds ok" do
+        get "/bulky"
+        expect(response).to be_ok
+      end
+
+      it "shows a table of all bulk update jobs" do
+        get "/bulky"
+        expect(response.body).to have_selector('table')
+      end
+
+      it "should have a flash message when notifications need to be displayed" do
+        get "/bulky"
+        expect(response.body).to have_content('Bulk Update Notifications')
+      end
+
+    end
+    describe "#show" do
+      let(:update) { Bulky::BulkUpdate.first }
+
+      it "responds ok" do
+        get "/bulky/#{update.id}"
+        expect(response).to be_ok
+      end
+
+      it "has displays a table of updated records" do
+        get "/bulky/#{update.id}"
+        expect(response.body).to have_selector('table')
+      end
+    end
+  end
+
   describe "#edit" do
     it "renders" do
       get '/bulky/accounts/edit'
