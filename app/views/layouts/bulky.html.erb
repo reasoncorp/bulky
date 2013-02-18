@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bulky Updates</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <header class="bulky-navbar bulky-navbar-fixed-top">
+    <div class="bulky-navbar-inner">
+      <div class="bulky-container">
+        <%= link_to "", '#', id: "logo" %>
+        <nav>
+          <ul class="bulky-nav">
+            <li><%= link_to "Home", "#{root_path}" %></li>
+            <li><%= link_to "", '#' %></li>
+            <li><%= link_to "", '#' %></li>
+          </ul>
+       </nav>
+     </div>
+   </div>
+  </header>
+  <body class="bulky-body">
+    <div class="bulky-container">
+      <%= notice %>
+      <%= yield %>
+    </div>
+      <%# <%= render "layouts/bulky/footer" %>
+  </body>
+</html>
