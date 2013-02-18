@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911153034) do
+ActiveRecord::Schema.define(:version => 20130215134702) do
 
   create_table "accounts", :force => true do |t|
     t.string   "business",        :null => false
@@ -23,11 +23,12 @@ ActiveRecord::Schema.define(:version => 20120911153034) do
   end
 
   create_table "bulky_bulk_updates", :force => true do |t|
-    t.text     "ids",             :null => false
-    t.text     "updates",         :null => false
+    t.text     "ids",                                :null => false
+    t.text     "updates",                            :null => false
     t.integer  "initiated_by_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.boolean  "notified",        :default => false, :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   add_index "bulky_bulk_updates", ["initiated_by_id"], :name => "index_bulky_bulk_updates_on_initiated_by_id"
