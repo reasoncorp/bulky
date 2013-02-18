@@ -1,0 +1,11 @@
+%tr
+  %td 
+    = updated_record.updatable_id
+  %td 
+    = updated_record.updatable_type
+  - if updated_record.error_message
+    %td 
+      = updated_record.error_message
+  - else
+    %td Success
+

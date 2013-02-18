@@ -1,0 +1,10 @@
+%tr
+  %td
+    = bulk_update.id 
+  %td 
+    = bulk_update.ids.count
+  %td
+    = link_to "View" , bulky_show_path(id: bulk_update.id)
+    = link_to "Retry", bulky_retry_path(model: model, id: bulk_update.id)
+
+
