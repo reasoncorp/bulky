@@ -1,0 +1,9 @@
+%h1 Job # #{bulk_update.id}
+%table.table.table-bordered
+  %thead
+    %tr
+      %th ID
+      %th Type 
+      %th Status
+    %tbody
+      = render bulk_update.updated_records
