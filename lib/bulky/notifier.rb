@@ -7,7 +7,7 @@ module Bulky
     
     def bulky_notifications
       if Bulky::BulkUpdate.belongs_to_user(current_user.id).needs_notification.any?
-        flash.now[:notice] = %Q[<a href="/bulky">Bulk Update Notifications</a>].html_safe
+        flash.now[:notice] = %Q[<a href="/bulky/admin">Bulk Update Notifications</a>].html_safe
       end
     end
 
