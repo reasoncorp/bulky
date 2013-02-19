@@ -22,7 +22,7 @@ module Bulky
     private
 
     def namespace(model_name)
-      @namespace ||= Rails.root.join("app/" "views/" "bulky/updates/edit_#{model_name}.html.erb")
+      @namespace ||= Rails.root.join("app/" "views/" "bulky/updates/edit_#{model_name.downcase}.html.erb")
     end
 
     def create_div(klass, style=nil)
@@ -39,7 +39,7 @@ module Bulky
 
     def start_form
       File.open(@namespace, "ab") do |f|
-        f.write "<%= form_tag('/bulky/#{model_name}', method: :put) do %>\n"
+        f.write "<%= form_tag('/bulky/#{model_name.downcase}', method: :put) do %>\n"
       end
     end
 
@@ -67,6 +67,7 @@ module Bulky
         f.write "<br/>"
         f.write "<%= submit_tag('Submit') %>\n"
       end
+      close_div
       close_div
     end
 
