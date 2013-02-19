@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Bulky::UpdatesController do
   describe "index and show actions" do
-    
+
     before :each do
       Bulky::BulkUpdate.destroy_all
       FactoryGirl.create(:bulky_bulk_update_with_bulky_updated_records)
@@ -12,17 +12,17 @@ describe Bulky::UpdatesController do
       let(:update) { Bulky::BulkUpdate.first }
 
       it "responds ok" do
-        get "/bulky"
+        get "/bulky/admin"
         expect(response).to be_ok
       end
 
       it "shows a table of all bulk update jobs" do
-        get "/bulky"
+        get "/bulky/admin"
         expect(response.body).to have_selector('table')
       end
 
       it "should have a flash message when notifications need to be displayed" do
-        get "/bulky"
+        get "/bulky/admin"
         expect(response.body).to have_content('Bulk Update Notifications')
       end
 
@@ -31,12 +31,12 @@ describe Bulky::UpdatesController do
       let(:update) { Bulky::BulkUpdate.first }
 
       it "responds ok" do
-        get "/bulky/#{update.id}"
+        get "/bulky/admin/#{update.id}"
         expect(response).to be_ok
       end
 
       it "has displays a table of updated records" do
-        get "/bulky/#{update.id}"
+        get "/bulky/admin/#{update.id}"
         expect(response.body).to have_selector('table')
       end
     end
@@ -94,6 +94,26 @@ describe Bulky::UpdatesController do
       a1.contact.should eq('Woot Bot')
       a1.business.should eq('TMA')
     end
+  end
+
+  describe "#retry" do
+    let(:a1) { Account.create! business: "TMA" }
+    let(:a2) { Account.create! business: "Adam Incorporated" }
+    let(:a3) { Account.create! business: "Ambers Accounting LLC" }
+    let(:size) { Resque.size(Bulky::Updater::QUEUE) }
+
+
+    it "queues queues the retry" do
+      put '/bulky/accounts', ids: "#{a1.id}\n#{a2.id},#{a3.id}\n\n,", bulk: {business: 'Awesome-o-tron'}
+      size.should eq(3)
+    end
+
+   it "sets a flash message on success" do
+      put '/bulky/accounts', ids: "#{a1.id}\n#{a2.id},#{a3.id}\n\n,", bulk: {business: 'Awesome-o-tron'}
+      expect(flash[:notice]).to have_content("Bulk updated has been scheduled successfully.")
+
+   end
+
   end
 end
 
