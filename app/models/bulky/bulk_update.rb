@@ -25,9 +25,4 @@ class Bulky::BulkUpdate < ActiveRecord::Base
     self.notified = true
     save!
   end
-
-  # def self.retry(model, ids, updates, user_id)
-  #   Bulky.enqueue_update(model, ids, updates, user_id)
-  #   redirect_to bulky_edit_path(model), notice: I18n.t('flash.notice.enqueue_update')
-  # end
 end
