@@ -9,7 +9,7 @@ module Bulky
     end
 
     initializer "bulky.notifier" do |app|
-      ApplicationController.send :include, Bulky::Notifier
+      ::ApplicationController.send :include, Bulky::Notifier
     end
   end
 end

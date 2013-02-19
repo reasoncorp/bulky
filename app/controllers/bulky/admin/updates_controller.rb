@@ -1,4 +1,4 @@
-class Bulky::Admin::UpdatesController < Bulky::UpdatesController
+class Bulky::Admin::UpdatesController < Bulky::ApplicationController
 
   layout 'bulky'
 
@@ -20,5 +20,15 @@ class Bulky::Admin::UpdatesController < Bulky::UpdatesController
   end
 
   private
+
+  def bulk_updates
+    @bulk_updates ||= Bulky::BulkUpdate.all
+  end
+  helper_method :bulk_updates
+
+  def bulk_update
+    @bulk_update ||= Bulky::BulkUpdate.find(params[:id])
+  end
+  helper_method :bulk_update
 
 end
