@@ -8,6 +8,8 @@ require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
 require "factory_girl_rails"
+require "genspec"
+require "FileUtils"
 
 Rails.backtrace_cleaner.remove_silencers!
 
