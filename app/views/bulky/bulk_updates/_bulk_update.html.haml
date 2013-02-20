@@ -3,8 +3,10 @@
     = bulk_update.id 
   %td 
     = bulk_update.ids.count
+  %td 
+    = bulk_update.notified.to_s.capitalize
   %td
     = button_to "View" , bulky_show_path(id: bulk_update.id), method: :get
-    = button_to "Retry", bulky_retry_path(model: model, id: bulk_update.id), method: :put
+    = button_to "Retry", bulky_retry_path(model: model, id: bulk_update.id), method: :put if bulk_update.completed? && bulk_update.errors_present
 
 

@@ -25,4 +25,12 @@ class Bulky::BulkUpdate < ActiveRecord::Base
     self.notified = true
     save!
   end
+
+  def completed?
+    updated_records.count == ids.count
+  end
+
+  def errors_present
+    updated_records.detect { |record| record.error_message != "" }
+  end
 end
