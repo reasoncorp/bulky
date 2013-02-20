@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Bulky Updates</title>
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    "bulky/application", :media => "all" %>
+    <%# <%= javascript_include_tag "bulky/application" %>
     <%= csrf_meta_tags %>
   </head>
   <header class="bulky-navbar bulky-navbar-fixed-top">
@@ -12,9 +12,8 @@
         <%= link_to "", '#', id: "logo" %>
         <nav>
           <ul class="bulky-nav">
-            <li><%= link_to "Home", "#{root_path}" %></li>
-            <li><%= link_to "", '#' %></li>
-            <li><%= link_to "", '#' %></li>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Index", bulky_index_path %></li>
           </ul>
        </nav>
      </div>
