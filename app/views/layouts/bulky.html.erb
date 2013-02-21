@@ -2,14 +2,15 @@
 <html>
   <head>
     <title>Bulky Updates</title>
-    <%= stylesheet_link_tag    "bulky/application", :media => "all" %>
-    <%# <%= javascript_include_tag "bulky/application" %>
+    <%= stylesheet_link_tag "bulky/application", :media => "all" %>
     <%= csrf_meta_tags %>
   </head>
   <header class="bulky-navbar bulky-navbar-fixed-top">
     <div class="bulky-navbar-inner">
       <div class="bulky-container">
-        <%= link_to "", '#', id: "logo" %>
+        <a href="#" id="logo">
+          <%= image_tag("bulky/bulky.jpg", size: "50x50") %>
+        </a>
         <nav>
           <ul class="bulky-nav">
             <li><%= link_to "Home", root_path %></li>
