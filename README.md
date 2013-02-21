@@ -15,6 +15,16 @@ Then in your shell prompt
   rake bulky:work # (starts the resque worker for bulky)
 ```
 
+## Views
+
+Bulky requires that you customize a form for making a bulk update. To get a quick start, provide an argument to the form generator provided. The generated form will require customization to fit your project's needs.
+
+```ruby
+  #app/views/bulky/updates/edit_account.html.erb
+  rails g bulky:form_installer Account
+``` 
+
+
 ## Usage
 
 Application
