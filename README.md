@@ -1,5 +1,7 @@
 # Bulky
 
+Bulky is a Rails engine that allows you to create background bulk update jobs for your models and provides an administrative interface to view job status. Flash notices are displayed in the host application when jobs are completed. 
+
 ## Installation
 
 In your Gemfile
@@ -17,7 +19,7 @@ Then in your shell prompt
 
 ## Views
 
-Bulky requires that you customize a form for making a bulk update. To get a quick start, provide an argument to the form generator provided. The generated form will require customization to fit your project's needs.
+Bulky requires that you customize a form for making a bulk update. To get a quick start, provide the model you wish to update in bulk as an argument to the form generator provided. The generated form will require customization to fit your project's needs.
 
 ```ruby
   #app/views/bulky/updates/edit_account.html.erb
