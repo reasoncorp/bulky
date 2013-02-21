@@ -1,0 +1,26 @@
+!!!5
+%html
+  %head
+    %title Bulky Updates
+    = stylesheet_link_tag "bulky/application", :media => "all" 
+    = javascript_include_tag "bulky/application"
+    = csrf_meta_tags
+  %body.bulky-body
+    %header.bulky-navbar.bulky-navbar-fixed-top
+      .bulky-navbar-inner
+        .bulky-container
+          
+      %nav#menu
+        %ul.bulky-nav
+          %li
+            = link_to "Bulky", '#', id: "logo"
+          %li
+            = link_to "Home", root_path
+          %li
+            = link_to "Index", bulky_index_path
+
+    .bulky-container
+      .flash-msg
+        .flash-notice= notice
+        .flash-alert= alert
+      = yield

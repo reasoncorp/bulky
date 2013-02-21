@@ -7,13 +7,13 @@ base: &base
   timeout: 5000
 
 development:
-  database: taxscribe_dev
+  database: bulky_dev
   <<: *base
 
 test:
-  database: taxscribe_test
+  database: bulky_test
   <<: *base
 
 production:
-  database: taxscribe_pro
+  database: bulky_pro
   <<: *base
