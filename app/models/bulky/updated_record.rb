@@ -8,4 +8,9 @@ class Bulky::UpdatedRecord < ActiveRecord::Base
 
   belongs_to :bulk_update, class_name: 'Bulky::BulkUpdate', foreign_key: :bulk_update_id
   belongs_to :updatable, polymorphic: true
+
+  def has_error?
+    error_message != "" 
+  end
+
 end
