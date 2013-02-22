@@ -7,4 +7,4 @@
       %th Error Message
       %th 
     %tbody
-      = render bulk_update.updated_records
+      = render bulk_update.updated_records.order(:updatable_id)
