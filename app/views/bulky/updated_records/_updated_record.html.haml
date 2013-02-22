@@ -9,4 +9,4 @@
     - else 
       = "Success"
   %td
-    = link_to "Retry", bulky_retry_path(updated_record.id) if updated_record.completed? && updated_record.has_error?
+    = button_to "Retry", bulky_retry_path(updated_record.id), method: :put if updated_record.completed? && updated_record.has_error?
