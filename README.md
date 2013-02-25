@@ -1,8 +1,10 @@
 # Bulky
 
-Bulky is a Rails engine that allows you to create background bulk update jobs for your models and provides an administrative interface to view job status. Flash notices are displayed in the host application when jobs are completed. 
+Bulky is a Rails engine that allows you to create background bulk update jobs for your models and provides an administrative interface to view job status.  
 
-Note that there are inherent security risks involved with bulk updating your models. Users with rights to perform bulk updates should be allowed explicitly and all others blocked from the controller altogether.
+To process bulk updates, a bulk update job is saved to the database and passed to Resque. Resque then queues a job for each of the records contained in the bulk update. Resque workers then process the queued updates in the background. All model validations and callbacks are handled normally and a flash notice will be displayed in the host application when all updates have been processed.
+
+Note that there are inherent security risks involved with bulk updating your models. Users with rights to perform bulk updates should be allowed explicitly and all others blocked.
 
 ## Installation
 
