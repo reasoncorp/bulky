@@ -1,5 +1,8 @@
+html, body{
+  height:100%;
+}
 body#wrapper {
-  background:#666666;
+  background:#bbb;
   font-family:Arial,helvetica,sans-serif;
   font-size:14px;
 	width:900px;
@@ -7,25 +10,22 @@ body#wrapper {
 	border:1px solid #bbb;
 	border-top:0;
 	border-bottom:0;
-  	
 }
 #content{
-  background-color:#eae8d3;
+  background-color:#fffffa;
   #content-left {
   	width:180px;
   }
 
   #content-left {
   	width:180px;
-  }
-
-  #content-main {
-  	margin-left:10px;
-  	width:500px;
-  	height:100%;
   }
 }
-
+#content-main {
+	width:500px;
+	height:100%;
+	margin-left:310px;
+}
 .bulky-navbar-inner{
   font-family:BRAGGADOCIO;
   font-size:40px;
@@ -40,7 +40,6 @@ nav#sidebar{
   font-size:14px;
   padding:15px 30px;
   position:fixed;
-  margin-top: -10px;
   
 }
 #sidebar a:link,a:visited{
@@ -56,12 +55,20 @@ nav#sidebar{
 .bulky-container {
   height:100%;
 }
+
+h2{
+  padding-top:20px;
+  margin-top:0;
+}
 #table{
   padding-top:10px;
+  height:100%;
 }
-table.table{
-  margin: 0 0 30px 310px;
-  background-color:white;
+table{
+  width:100%;
+  border-collapse:collapse;
+  height:100%;
+  background-color:transparent;
 
 }
 

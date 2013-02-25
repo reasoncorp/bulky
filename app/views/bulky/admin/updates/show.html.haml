@@ -1,9 +1,10 @@
-%h1 Job # #{bulk_update.id}
-%table.table.table-bordered
-  %thead
-    %tr
-      %th ID
-      %th Type 
-      %th Error Message
-    %tbody
-      = render bulk_update.updated_records
+%h2 Job # #{bulk_update.id}
+#table
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th ID
+        %th Type 
+        %th Error Message
+      %tbody
+        = render bulk_update.updated_records
