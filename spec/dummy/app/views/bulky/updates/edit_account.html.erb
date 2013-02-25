@@ -1,14 +1,19 @@
 <%= form_tag('/bulky/account', method: :put) do %>
-<div class='bulky-container', style=''><h4>Ids To Update</h4><div class='bulky-id-input', style=''><%= text_area_tag(:ids) %>
+<div class='bulky-container', style=''>
+<h4>Ids To Update</h4>
+<div class='bulky-id-input', style=''>
+<%= text_area_tag(:ids) %>
 </div>
 </div>
-<div class='bulky-container', style=''><h4>Attributes To Update</h4><div class='bulky-form-inputs', style=''><%= label_tag(:business, 'Business') %>
+<div class='bulky-container', style=''>
+<h4>Attributes To Update</h4><div class='bulky-form-inputs', style=''>
+<%= label_tag(:business, 'Business') %>
 <%= text_field_tag(:business, '', name: 'bulk[business]') %>
 <%= label_tag(:contact, 'Contact') %>
 <%= text_field_tag(:contact, '', name: 'bulk[contact]') %>
 <%= label_tag(:age, 'Age') %>
 <%= text_field_tag(:age, '', name: 'bulk[age]') %>
-<br/><%= submit_tag('Submit') %>
+<br/> <%= submit_tag('Submit') %>
 </div>
 </div>
 <% end %>
