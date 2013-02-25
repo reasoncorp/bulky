@@ -31,11 +31,9 @@ module Bulky
       end
     end
 
-    def create_div(klass, style=nil)
+    def create_div(klass, style=nil, &block)
       append("<div class='#{klass}', style='#{style}'>\n")
-    end
-
-    def close_div
+      block.call
       append("</div>\n")
     end
 
@@ -43,23 +41,23 @@ module Bulky
       append("<%= form_tag('/bulky/#{model_name.downcase}', method: :put) do %>\n")
     end
 
-    def write_id_div
-      create_div("bulky-container")
-      append("<h4>Ids To Update</h4>\n")
-      create_div("bulky-id-input")
-      append("<%= text_area_tag(:ids) %>\n")
-      close_div
-      close_div
+    def write_id_div 
+      create_div("bulky-container") do
+        append("<h4>Ids To Update</h4>\n")
+        create_div("bulky-id-input") do
+          append("<%= text_area_tag(:ids) %>\n")
+        end
+      end
     end
 
     def write_options_div
-      create_div("bulky-container")
-      append("<h4>Attributes To Update</h4>")
-      create_div("bulky-form-inputs")
-      write_form_fields(@columns)
-      append("<br/> <%= submit_tag('Submit') %>\n")
-      close_div
-      close_div
+      create_div("bulky-container") do
+        append("<h4>Attributes To Update</h4>")
+        create_div("bulky-form-inputs") do
+          write_form_fields(@columns)
+          append("<br/> <%= submit_tag('Submit') %>\n")
+        end
+      end
     end
 
     def write_form_fields(columns_from_table)
