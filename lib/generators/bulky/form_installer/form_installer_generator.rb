@@ -14,8 +14,8 @@ module Bulky
 
     def write_form
       start_form
-      write_div_1
-      write_div_2
+      write_id_div
+      write_options_div
       close_form
     end
 
@@ -25,50 +25,39 @@ module Bulky
       @namespace ||= Rails.root.join("app/" "views/" "bulky/updates/edit_#{model_name.downcase}.html.erb")
     end
 
-    def create_div(klass, style=nil)
+    def append(content)
       File.open(@namespace, "ab") do |f|
-        f.write "<div class='#{klass}', style='#{style}'>"
-      end 
+        f.write content
+      end
     end
 
-    def close_div
-      File.open(@namespace, "ab") do |f|
-        f.write "</div>\n"
-      end
+    def create_div(klass, style=nil, &block)
+      append("<div class='#{klass}', style='#{style}'>\n")
+      block.call
+      append("</div>\n")
     end
 
     def start_form
-      File.open(@namespace, "ab") do |f|
-        f.write "<%= form_tag('/bulky/#{model_name.downcase}', method: :put) do %>\n"
+      append("<%= form_tag('/bulky/#{model_name.downcase}', method: :put) do %>\n")
+    end
+
+    def write_id_div 
+      create_div("bulky-container") do
+        append("<h4>Ids To Update</h4>\n")
+        create_div("bulky-id-input") do
+          append("<%= text_area_tag(:ids) %>\n")
+        end
       end
     end
 
-    def write_div_1
-      create_div("bulky-container")
-      File.open(@namespace, "ab") do |f|
-        f.write "<h4>Ids To Update</h4>"
+    def write_options_div
+      create_div("bulky-container") do
+        append("<h4>Attributes To Update</h4>")
+        create_div("bulky-form-inputs") do
+          write_form_fields(@columns)
+          append("<br/> <%= submit_tag('Submit') %>\n")
+        end
       end
-      create_div("bulky-id-input")
-      File.open(@namespace, "ab") do |f|
-        f.write "<%= text_area_tag(:ids) %>\n"
-      end
-      close_div
-      close_div
-    end
-
-    def write_div_2
-      create_div("bulky-container")
-      File.open(@namespace, "ab") do |f|
-        f.write "<h4>Attributes To Update</h4>"
-      end
-      create_div("bulky-form-inputs")
-      write_form_fields(@columns)
-      File.open(@namespace, "ab") do |f|
-        f.write "<br/>"
-        f.write "<%= submit_tag('Submit') %>\n"
-      end
-      close_div
-      close_div
     end
 
     def write_form_fields(columns_from_table)
@@ -90,23 +79,15 @@ module Bulky
     end
 
     def build_string_field(column_name)
-      File.open(@namespace, "ab") do |f|
-        f.write "<%= label_tag(:#{column_name}, '#{column_name.capitalize.humanize}') %>\n"
-        f.write "<%= text_field_tag(:#{column_name}, '', name: 'bulk[#{column_name}]') %>\n"
-      end
+      append("<%= label_tag(:#{column_name}, '#{column_name.capitalize.humanize}') %>\n<%= text_field_tag(:#{column_name}, '', name: 'bulk[#{column_name}]') %>\n")
     end
 
     def build_integer_field(column_name)
-      File.open(@namespace, "ab") do |f|
-        f.write "<%= label_tag(:#{column_name}, '#{column_name.capitalize.humanize}') %>\n"
-        f.write "<%= text_field_tag(:#{column_name}, '', name: 'bulk[#{column_name}]') %>\n"
-      end
+      append("<%= label_tag(:#{column_name}, '#{column_name.capitalize.humanize}') %>\n<%= text_field_tag(:#{column_name}, '', name: 'bulk[#{column_name}]') %>\n")
     end
 
     def build_select_field(column)
-      File.open(@namespace, "ab") do |f|
-        f.write "<%= select_tag(:#{column.name}, options_for_select(#{gather_select_field_values(column)}), name: 'bulk[#{column.name}]') %>\n"
-      end
+      append("<%= select_tag(:#{column.name}, options_for_select(#{gather_select_field_values(column)}), name: 'bulk[#{column.name}]') %>\n")
     end
 
     def gather_select_field_values(column)
@@ -118,16 +99,11 @@ module Bulky
     end
 
     def build_boolean_field(column_name)
-      File.open(@namespace, "ab") do |f|
-        f.write "<%= check_box_tag(:#{column_name}, '', name: 'bulk[#{column_name}]') %>\n"
-        f.write "<%= label_tag(:#{column_name}) %>\n"
-      end
+      append("<%= check_box_tag(:#{column_name}, '', name: 'bulk[#{column_name}]') %>\n<%= label_tag(:#{column_name}) %>\n")
     end
 
     def close_form
-      File.open(@namespace, "ab") do |f|
-        f.write "<% end %>"
-      end
+      append("<% end %>")
     end
   end
 end

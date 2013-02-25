@@ -19,9 +19,9 @@ class Bulky::BulkUpdate < ActiveRecord::Base
 
   scope :needs_notification, where(notified: false)
 
-  scope :belongs_to_user, lambda { |user_id| where("initiated_by_id = ? OR initiated_by_id IS ?", user_id, nil) }
+  scope :belongs_to_user, lambda { |user_id| where("initiated_by_id = ? OR initiated_by_id IS NULL", user_id) }
   
-  def mark_as_notified
+  def mark_as_notified!
     self.notified = true
     save!
   end

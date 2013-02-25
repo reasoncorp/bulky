@@ -25,6 +25,7 @@ module Bulky
           @log.error_backtrace = e.backtrace.join("\n")
           raise e
         ensure
+          @log.completed = true
           @log.save!
         end
       end

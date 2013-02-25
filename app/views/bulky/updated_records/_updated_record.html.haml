@@ -3,9 +3,10 @@
     = updated_record.updatable_id
   %td 
     = updated_record.updatable_type
-  - if updated_record.error_message
-    %td 
+  %td
+    - if updated_record.error_message.present?
       = updated_record.error_message
-  - else
-    %td Success
-
+    - else 
+      = "Success"
+  %td
+    = button_to "Retry", bulky_retry_path(updated_record.id), method: :put if updated_record.completed? && updated_record.has_error?
