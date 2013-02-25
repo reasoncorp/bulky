@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215134702) do
+ActiveRecord::Schema.define(:version => 20130222210156) do
 
   create_table "accounts", :force => true do |t|
     t.string   "business",        :null => false
@@ -34,14 +34,15 @@ ActiveRecord::Schema.define(:version => 20130215134702) do
   add_index "bulky_bulk_updates", ["initiated_by_id"], :name => "index_bulky_bulk_updates_on_initiated_by_id"
 
   create_table "bulky_updated_records", :force => true do |t|
-    t.integer  "bulk_update_id",    :null => false
-    t.integer  "updatable_id",      :null => false
-    t.string   "updatable_type",    :null => false
-    t.text     "updatable_changes", :null => false
+    t.integer  "bulk_update_id",                       :null => false
+    t.integer  "updatable_id",                         :null => false
+    t.string   "updatable_type",                       :null => false
+    t.text     "updatable_changes",                    :null => false
     t.string   "error_message"
     t.text     "error_backtrace"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.boolean  "completed",         :default => false, :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   add_index "bulky_updated_records", ["bulk_update_id"], :name => "index_bulky_updated_records_on_bulk_update_id"
