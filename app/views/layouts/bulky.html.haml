@@ -17,11 +17,12 @@
             %li
               = link_to "Index", bulky_index_path
               
+          
+      #content-main
+        .bulky-container
           .flash-msg
             .flash-notice= notice
             .flash-alert= alert
-      #content-main
-        .bulky-container
           = yield
 
       

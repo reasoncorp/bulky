@@ -2,14 +2,11 @@ html, body{
   height:100%;
 }
 body#wrapper {
-  background:#bbb;
+  background:rgb(39, 37, 37);
   font-family:Arial,helvetica,sans-serif;
   font-size:14px;
 	width:900px;
 	margin:0px auto;
-	border:1px solid #bbb;
-	border-top:0;
-	border-bottom:0;
 }
 #content{
   background-color:#fffffa;
@@ -49,11 +46,6 @@ nav#sidebar{
   text-decoration:none;
   
 }
-#logo{
-  background: -webkit-linear-gradient(rgb(5, 97, 189),#003366);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 #sidebar ul li{
   list-style:none;
   padding:5px 0;
@@ -91,3 +83,11 @@ thead tr{
   background-color: gold;
   border-radius: 16px;
 } 
+div.flash-notice{
+  border:solid 1px rgb(157, 219, 194);
+  padding:6px 7px;
+  border-radius:6px;
+  background-color:rgb(69, 226, 144);
+  text-align:center;
+  margin-bottom:16px;
+}
