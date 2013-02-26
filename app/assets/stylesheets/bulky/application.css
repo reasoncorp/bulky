@@ -13,23 +13,24 @@ body#wrapper {
 }
 #content{
   background-color:#fffffa;
-  #content-left {
-  	width:180px;
-  }
-
-  #content-left {
-  	width:180px;
-  }
+  overflow:auto;
+  min-height:100%;
+}
+#content-left {
+	width:180px;
 }
 #content-main {
 	width:500px;
 	height:100%;
-	margin-left:310px;
+	margin-left:330px;
 }
 .bulky-navbar-inner{
   font-family:BRAGGADOCIO;
   font-size:40px;
   padding: 15px 10px;
+}
+.bulky-container{
+  padding: 40px 0px;
 }
 
 nav#sidebar{
@@ -37,42 +38,57 @@ nav#sidebar{
   float:left; 
   height:100%;
   width:200px;
-  font-size:14px;
+  font-size:16px;
   padding:15px 30px;
   position:fixed;
   
 }
 #sidebar a:link,a:visited{
-    color:#003366;
-    text-decoration:none;
+  
+  color:#003366;
+  text-decoration:none;
+  
+}
+#logo{
+  background: -webkit-linear-gradient(rgb(5, 97, 189),#003366);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#sidebar ul li{
+  list-style:none;
+  padding:5px 0;
 }
 
-#sidebar li{
-    list-style:none;
-    padding:5px 0;
-}
-
-.bulky-container {
-  height:100%;
-}
 
 h2{
   padding-top:20px;
   margin-top:0;
-}
-#table{
-  padding-top:10px;
-  height:100%;
+  float: right;
+  text-shadow: 0.1em 0.1em 0.2em rgb(146, 146, 146);
 }
 table{
   width:100%;
   border-collapse:collapse;
-  height:100%;
   background-color:transparent;
-
+}
+thead tr{
+  background-color:#003366;
+  color:white;
+  background-image: -webkit-linear-gradient(rgb(5, 97, 189),#003366);
 }
 
+.table th, .table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+  vertical-align: middle;
 
-
-
-
+}
+.button_to input{
+  color: rgb(88, 83, 71);
+  padding: 8px;
+  background-color: gold;
+  border-radius: 16px;
+} 
