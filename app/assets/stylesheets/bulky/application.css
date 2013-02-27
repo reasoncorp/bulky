@@ -93,10 +93,10 @@ thead tr{
 } 
 div.flash-notice{
   box-shadow: 2px 2px 4px #888;
-  border:solid 1px rgb(148, 247, 101);
+  border:solid 1px rgb(176, 223, 154);
   padding:6px 7px;
   border-radius:6px;
-  background-color:rgb(148, 247, 101);
+  background-color:rgb(191, 235, 171);
   text-align:center;
   margin-bottom:16px;
 }
