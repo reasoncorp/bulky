@@ -21,7 +21,10 @@ body#wrapper {
 	height:100%;
 	margin-left:330px;
 }
-.bulky-navbar-inner{
+.bulky-navbar-inner a#logo{
+  color:rgb(12, 82, 153);
+  text-shadow:none;
+  text-decoration:none;
   font-family:BRAGGADOCIO;
   font-size:40px;
   padding: 15px 10px;
@@ -36,12 +39,12 @@ nav#sidebar{
   height:100%;
   width:200px;
   font-size:19px;
-  padding:15px 30px;
+  padding:20px 30px;
   position:fixed;
   
 }
 
-#sidebar a:link,a:visited{
+#sidebar ul.bulky-nav a:link,a:visited{
   font-weight: bold;
   text-shadow: -1px -1px rgb(219, 219, 219), 1px 1px #333;
   color:rgb(12, 82, 153);
@@ -53,15 +56,13 @@ nav#sidebar{
   padding:7px 0;
 }
 
-.bulky-navbar-inner a#logo{
-  text-shadow:none;
-}
 h2{
   margin-top:0;
   float: right;
   text-shadow: 0.1em 0.1em 0.2em rgb(146, 146, 146);
 }
 table{
+  float:left;
   width:100%;
   border-collapse:collapse;
   background-color:transparent;
@@ -74,6 +75,7 @@ thead tr{
   background-color:#003366;
   color:white;
   background-image: -webkit-linear-gradient(rgb(5, 97, 189),#003366);
+  background-image: -moz-linear-gradient(rgb(5, 97, 189),#003366);
 }
 
 .table th, .table td {
