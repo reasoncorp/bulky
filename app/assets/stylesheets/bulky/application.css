@@ -35,23 +35,27 @@ nav#sidebar{
   float:left; 
   height:100%;
   width:200px;
-  font-size:16px;
+  font-size:19px;
   padding:15px 30px;
   position:fixed;
   
 }
+
 #sidebar a:link,a:visited{
-  
-  color:#003366;
+  font-weight: bold;
+  text-shadow: 0.1em 0.1em rgb(102, 102, 102);
+  color:rgb(12, 82, 153);
   text-decoration:none;
   
 }
 #sidebar ul li{
   list-style:none;
-  padding:5px 0;
+  padding:7px 0;
 }
 
-
+.bulky-navbar-inner a#logo{
+  text-shadow:none;
+}
 h2{
   margin-top:0;
   float: right;
