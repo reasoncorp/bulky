@@ -20,9 +20,10 @@
           
       #content-main
         .bulky-container
-          .flash-msg
-            .flash-notice= notice
-            .flash-alert= alert
+          -if flash[:notice].present?
+            .flash-msg
+              .flash-notice= notice
+              .flash-alert= alert
           = yield
 
       

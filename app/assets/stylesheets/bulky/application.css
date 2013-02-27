@@ -43,7 +43,7 @@ nav#sidebar{
 
 #sidebar a:link,a:visited{
   font-weight: bold;
-  text-shadow: 0.1em 0.1em rgb(102, 102, 102);
+  text-shadow: -1px -1px rgb(219, 219, 219), 1px 1px #333;
   color:rgb(12, 82, 153);
   text-decoration:none;
   
@@ -65,6 +65,9 @@ table{
   width:100%;
   border-collapse:collapse;
   background-color:transparent;
+  tr.error{
+    background-color:red;
+  }
 }
 thead tr{
   background-color:#003366;
@@ -88,10 +91,11 @@ thead tr{
   border-radius: 16px;
 } 
 div.flash-notice{
-  border:solid 1px rgb(157, 219, 194);
+  box-shadow: 2px 2px 4px #888;
+  border:solid 1px rgb(148, 247, 101);
   padding:6px 7px;
   border-radius:6px;
-  background-color:rgb(69, 226, 144);
+  background-color:rgb(148, 247, 101);
   text-align:center;
   margin-bottom:16px;
 }
