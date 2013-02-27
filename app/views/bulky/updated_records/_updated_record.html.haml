@@ -1,12 +1,26 @@
-%tr
-  %td 
-    = updated_record.updatable_id
-  %td 
-    = updated_record.updatable_type
-  %td
-    - if updated_record.error_message.present?
-      = updated_record.error_message
-    - else 
-      = "Success"
-  %td
-    = button_to "Retry", bulky_retry_path(updated_record.id), method: :put if updated_record.completed? && updated_record.has_error?
+- if updated_record.error_message.present?
+  %tr.error
+    %td 
+      = updated_record.updatable_id
+    %td 
+      = updated_record.updatable_type
+    %td
+      - if updated_record.error_message.present?
+        = updated_record.error_message
+      - else 
+        = "Success"
+    %td
+      = button_to "Retry", bulky_retry_path(updated_record.id), method: :put if (updated_record.completed? && updated_record.has_error?)
+- else 
+  %tr
+    %td 
+      = updated_record.updatable_id
+    %td 
+      = updated_record.updatable_type
+    %td
+      - if updated_record.error_message.present?
+        = updated_record.error_message
+      - else 
+        = "Success"
+    %td
+      = button_to "Retry", bulky_retry_path(updated_record.id), method: :put if updated_record.completed? && updated_record.has_error?

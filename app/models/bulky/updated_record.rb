@@ -10,7 +10,7 @@ class Bulky::UpdatedRecord < ActiveRecord::Base
   belongs_to :updatable, polymorphic: true
 
   def has_error?
-    error_message != "" 
+    error_message.present?
   end
 
 end
