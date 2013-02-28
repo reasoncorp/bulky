@@ -22,7 +22,7 @@ body#wrapper {
 	margin-left:330px;
 }
 .bulky-navbar-inner a#logo{
-  color:rgb(12, 82, 153);
+  color:rgb(3, 63, 124);
   text-shadow:none;
   text-decoration:none;
   font-family:BRAGGADOCIO;
@@ -38,7 +38,7 @@ nav#sidebar{
   float:left; 
   height:100%;
   width:200px;
-  font-size:19px;
+  font-size:20px;
   padding:20px 30px;
   position:fixed;
   
@@ -47,7 +47,7 @@ nav#sidebar{
 #sidebar ul.bulky-nav a:link,a:visited{
   font-weight: bold;
   text-shadow: -1px -1px rgb(219, 219, 219), 1px 1px #333;
-  color:rgb(12, 82, 153);
+  color:rgb(3, 63, 124);
   text-decoration:none;
   
 }
@@ -66,7 +66,7 @@ table{
   width:100%;
   border-collapse:collapse;
   background-color:transparent;
-  
+  margin-bottom: 25px;
 }
 tr.error{
   background-color:rgb(214, 176, 176);
@@ -90,7 +90,7 @@ thead tr{
 .button_to input{
   color: rgb(88, 83, 71);
   padding: 8px;
-  background-color: gold;
+  background-color: #EFD961;
   border-radius: 16px;
 } 
 div.flash-notice{

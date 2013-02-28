@@ -23,6 +23,8 @@
           -if flash[:notice].present?
             .flash-msg
               .flash-notice= notice
+          -if flash[:alert].present?
+            .flash-msg              
               .flash-alert= alert
           = yield
 
