@@ -69,7 +69,7 @@ table{
   margin-bottom: 25px;
 }
 tr.error{
-  background-color:rgb(214, 176, 176);
+  background-color:rgb(228, 173, 173);
 }
 thead tr{
   background-color:#003366;
@@ -88,10 +88,26 @@ thead tr{
 
 }
 .button_to input{
-  color: rgb(88, 83, 71);
-  padding: 8px;
-  background-color: #EFD961;
-  border-radius: 16px;
+  background-image: -webkit-linear-gradient(#EFD961,rgb(182, 160, 40));
+  display: inline-block;
+  padding: 5px 10px 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-box-shadow: 0 1px 3px #999;
+  -webkit-box-shadow: 0 1px 3px #999;
+  text-shadow: 0 -1px 1px #222;
+  border-bottom: 1px solid #222;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.25);
 } 
 div.flash-notice{
   box-shadow: 2px 2px 4px #888;
