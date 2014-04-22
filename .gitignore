@@ -1,4 +1,6 @@
 .bundle/
+.ruby-gemset
+.ruby-version
 log/*.log
 pkg/
 spec/dummy/config/database.yml
