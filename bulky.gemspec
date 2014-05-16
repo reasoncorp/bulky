@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "resque", "~> 1.25"
   s.add_dependency "haml",   ">= 4.0"
 
+  s.add_development_dependency "pry"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "mysql2",           "~> 0.3.16"
   s.add_development_dependency "rspec-rails",      "~> 2.14.2"

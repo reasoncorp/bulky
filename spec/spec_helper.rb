@@ -7,6 +7,7 @@ require "rspec/rails"
 require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
+require "pry"
 
 Rails.backtrace_cleaner.remove_silencers!
 
