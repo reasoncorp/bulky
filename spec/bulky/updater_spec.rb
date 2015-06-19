@@ -15,7 +15,7 @@ describe Bulky::Updater do
       Account.stub(:find).with(1).and_return(@account = Account.new)
       Bulky::BulkUpdate.stub(:find).with(5).and_return(@bulk = Bulky::BulkUpdate.new)
       Bulky::UpdatedRecord.any_instance.stub(:save!).and_return(true)
-      @account.stub!(:save!).and_return(true)
+      @account.stub(:save!).and_return(true)
     end
 
     it "will find the class it is supposed to update" do
@@ -30,7 +30,7 @@ describe Bulky::Updater do
     end
 
     it "will update the attributes on the instance with the given updates" do
-      @account.should_receive(:attributes=).with(updates = {"business" => "Adam Inc"})
+      @account.should_receive(:attributes=).with("business" => "Adam Inc")
       Bulky::BulkUpdate.stub(:find).and_return(@bulk = Bulky::BulkUpdate.new { |b| b.updates = {"business" => "Adam Inc"} })
       Bulky::Updater.perform('Account', 1, 5)
     end
@@ -54,18 +54,27 @@ describe Bulky::Updater do
       log.updatable_changes.should eq('business' => ['Higher Inc.', 'Fallen Corp'])
     end
 
+    describe "bulky attributes" do
+      let(:bulk_update) { Bulky::BulkUpdate.create! { |b| b.ids = [1]; b.updates = {"id" => 10} } }
+      let(:updater)     { Bulky::Updater.new(account, bulk_update.id) }
+
+      it "only passes through bulky_attributes as permitted" do
+        expect(updater.updates).not_to have_key('id')
+      end
+    end
+
     describe "that has errors" do
-      let(:bulk_update) { Bulky::BulkUpdate.create! { |b| b.ids = [1,2]; b.updates = {"age" => 27} } }
-      let(:updater) { Bulky::Updater.new(account, bulk_update.id) }
-      let(:log) { Bulky::UpdatedRecord.last }
+      let(:bulk_update) { Bulky::BulkUpdate.create! { |b| b.ids = [1,2]; b.updates = {"business" => ''} } }
+      let(:updater)     { Bulky::Updater.new(account, bulk_update.id) }
+      let(:log)         { Bulky::UpdatedRecord.last }
 
       it "logs any errors that happen when saving the model" do
         updater.update! rescue nil
-        log.error_message.should eq("Can't mass-assign protected attributes: age")
+        log.error_message.should eq("Validation failed: Business can't be blank")
       end
 
       it "reraises any errors that happen when saving the model" do
-        expect { updater.update! }.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+        expect { updater.update! }.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
   end

@@ -24,4 +24,5 @@ module Bulky
 
 end
 
+require 'bulky/model'
 require 'bulky/updater'

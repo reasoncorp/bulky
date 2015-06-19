@@ -20,8 +20,12 @@ class Bulky::UpdatesController < ApplicationController
 
   private
 
+  helper_method def model_name
+    params.require(:model)
+  end
+
   def model
-    @model ||= params[:model].classify.constantize
+    @model ||= model_name.classify.constantize
   end
   
   def ids

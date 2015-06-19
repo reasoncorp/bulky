@@ -7,7 +7,7 @@ describe Bulky do
 
   describe ".enqueue_update" do
     before :each do 
-      Bulky.stub(:log_bulk_update).and_return(mock('BulkUpdate', id: 5, updates: updates))
+      Bulky.stub(:log_bulk_update).and_return(double('BulkUpdate', id: 5, updates: updates))
     end
 
     it "will enqueue a Bulky::Update with the class and updates for each id provided" do

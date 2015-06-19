@@ -8,7 +8,7 @@ describe Bulky::FormHelper do
     let(:html_value) { collection.first[0] }
 
     it "creates a list of attributes for each whitelisted attribute" do
-      collection.length.should eq(Account.accessible_attributes.count - 1)
+      collection.length.should eq(Account.bulky_attributes.count)
     end
 
     it "uses the column name the option" do
