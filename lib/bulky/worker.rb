@@ -1,5 +1,5 @@
 module Bulky
-  module Worker
+  class Worker
     include Sidekiq::Worker
 
     def perform(model_name, update_id, bulk_update_id)

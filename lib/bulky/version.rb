@@ -1,3 +1,3 @@
 module Bulky
-  VERSION = "1.0.0.pre"
+  VERSION = File.read(File.expand_path '../../../VERSION', __FILE__)
 end
