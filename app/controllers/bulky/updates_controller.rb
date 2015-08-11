@@ -1,7 +1,5 @@
 class Bulky::UpdatesController < ApplicationController
 
-  helper_method :model
-
   def edit
   end
 
@@ -28,7 +26,7 @@ class Bulky::UpdatesController < ApplicationController
     params.require(:model)
   end
 
-  def model
+  helper_method def model
     @model ||= model_name.classify.constantize
   end
   
