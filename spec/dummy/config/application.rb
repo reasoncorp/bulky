@@ -22,6 +22,9 @@ module Dummy
 
     # Raise exceptions instead of rendering exception templates
     config.action_dispatch.show_exceptions = false
+    # because this belongs here for some reason...??? also in spec_helper
+    # thanks rails 5 :/
+    config.active_support.test_order = :random
   end
 end
 
