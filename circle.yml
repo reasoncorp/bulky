@@ -15,4 +15,4 @@ database:
 
 test:
   override:
-    - bundle exec rspec --color spec --format progress
+    - bundle exec rspec
