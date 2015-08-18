@@ -2,15 +2,12 @@ ENV['RAILS_ENV']   = 'test'
 ENV['BULKY_QUEUE'] = 'bulky_test'
 
 require File.expand_path("../dummy/config/application.rb",  __FILE__)
-require 'rails/test_help'
 require 'rspec/rails'
-require 'capybara/rspec'
-require 'capybara/rails'
 require 'database_cleaner'
-require 'pry'
 require 'sidekiq/api'
+require 'pry'
 
-Rails.backtrace_cleaner.remove_silencers!
+# Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
