@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Bulky::UpdatedRecord do
 
-  let(:record) { Bulky::UpdatedRecord.new }
+  let(:record) { described_class.new }
 
   it "uses bulky_updated_records for its table name" do
-    Bulky::UpdatedRecord.table_name.should eq('bulky_updated_records')
+    expect(Bulky::UpdatedRecord.table_name).to eq('bulky_updated_records')
   end
 
   describe "validations" do
@@ -31,7 +31,7 @@ describe Bulky::UpdatedRecord do
     it "belongs to updatedable, polymorphic: true" do
       association = Bulky::UpdatedRecord.reflect_on_association(:updatable)
       expect(association.macro).to eq(:belongs_to)
-      expect(association.options[:polymorphic]).to be_true
+      expect(association.options[:polymorphic]).to be true
     end
   end
 
@@ -43,7 +43,7 @@ describe Bulky::UpdatedRecord do
       record.updatable_changes = {contact: [nil, 'Awesome-o-tron']}
       record.save(validate: false) # i know updatable can't be blank...
       record.reload
-      record.updatable_changes.should eq(contact: [nil, 'Awesome-o-tron'])
+      expect(record.updatable_changes).to eq(contact: [nil, 'Awesome-o-tron'])
     end
   end
 

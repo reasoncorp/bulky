@@ -49,5 +49,6 @@ end
 
 def process_bulky_queue_item
   job = bulky_queue.first
-  job.class.new.perform(*job.args)
+  job.klass.constantize.new.perform(*job.args)
+  job.delete
 end
