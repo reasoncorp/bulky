@@ -5,7 +5,7 @@ describe Bulky::BulkUpdate do
   let (:update) { Bulky::BulkUpdate.new }
 
   it "uses bulky_bulk_updates for its table name" do
-    Bulky::BulkUpdate.table_name.should eq('bulky_bulk_updates')
+    expect(Bulky::BulkUpdate.table_name).to eq('bulky_bulk_updates')
   end
 
   describe "validation" do
@@ -13,18 +13,6 @@ describe Bulky::BulkUpdate do
       update.ids = nil
       update.valid?
       expect(update.errors[:ids]).to include("can't be blank")
-    end
-
-    it "validates presence of updates" do
-      update.updates = nil
-      update.valid?
-      expect(update.errors[:updates]).to include("can't be blank")
-    end
-
-    it "validates updates is a hash" do
-      update.updates = "not a hash"
-      update.valid?
-      expect(update.errors[:updates]).to include("must be a hash")
     end
   end
 
@@ -41,7 +29,7 @@ describe Bulky::BulkUpdate do
       update.updates = {foo: 'on you'}
       update.save!
       update.reload
-      update.updates.should eq(foo: 'on you')
+      expect(update.updates).to eq(foo: 'on you')
     end
 
     it "serializes ids as an array" do
@@ -49,7 +37,7 @@ describe Bulky::BulkUpdate do
       update.updates = {foo: 'on you'}
       update.save!
       update.reload
-      update.ids.should eq([1,2,3,4])
+      expect(update.ids).to eq([1,2,3,4])
     end
   end
 end

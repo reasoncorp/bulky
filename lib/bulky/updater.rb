@@ -3,11 +3,6 @@ module Bulky
 
     attr_reader :model, :bulk_update
 
-    def self.perform(model_name, update_id, bulk_update_id)
-      model = model_name.constantize.find(update_id)
-      new(model, bulk_update_id).update!
-    end
-
     def initialize(model, bulk_update_id)
       @bulk_update = Bulky::BulkUpdate.find(bulk_update_id)
       @model       = model

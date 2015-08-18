@@ -1,0 +1,18 @@
+machine:
+  ruby:
+    version: 2.2.2
+  environment:
+    RACK_ENV:  test
+    RAILS_ENV: test
+
+machine:
+  ruby:
+    version: 2.2.2
+
+database:
+  override:
+    - rake db:drop db:create db:migrate
+
+test:
+  override:
+    - bundle exec rspec

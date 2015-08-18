@@ -7,7 +7,7 @@ module Bulky
     bulk_update = log_bulk_update(ids, updates)
 
     ids.each do |update_id|
-      Resque.enqueue(Bulky::Updater, model.name, update_id, bulk_update.id)
+      Bulky::Worker.perform_async model.name, update_id, bulk_update.id
     end
   end
 
@@ -26,3 +26,4 @@ end
 
 require 'bulky/model'
 require 'bulky/updater'
+require 'bulky/worker'

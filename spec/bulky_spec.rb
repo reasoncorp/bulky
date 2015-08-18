@@ -7,18 +7,19 @@ describe Bulky do
 
   describe ".enqueue_update" do
     before :each do 
-      Bulky.stub(:log_bulk_update).and_return(double('BulkUpdate', id: 5, updates: updates))
+      allow(Bulky).to receive(:log_bulk_update).and_return(
+        double('BulkUpdate', id: 5, updates: updates))
     end
 
     it "will enqueue a Bulky::Update with the class and updates for each id provided" do
-      Resque.should_receive(:enqueue).with(Bulky::Updater, 'Account', 10, 5)
-      Resque.should_receive(:enqueue).with(Bulky::Updater, 'Account', 25, 5)
+      expect(Bulky::Worker).to receive(:perform_async).with('Account', 10, 5)
+      expect(Bulky::Worker).to receive(:perform_async).with('Account', 25, 5)
       Bulky.enqueue_update(Account, ids, updates)
     end
 
     it "will log that it has started a bulk update" do
-      Bulky.should_receive(:log_bulk_update).with([10,25], updates)
-      Resque.stub(:enqueue)
+      expect(Bulky).to receive(:log_bulk_update).with([10,25], updates)
+      allow(Bulky::Worker).to receive(:perform_async)
       Bulky.enqueue_update(Account, ids, updates)
     end
   end
@@ -34,7 +35,7 @@ describe Bulky do
       "\n1\n,\n2 ,\n3, 4 \n\n,,"
     ].each do |example|
       it "can parse #{example.inspect} into #{array.inspect}" do
-        Bulky.parse_ids(example).should eq(array)
+        expect(Bulky.parse_ids(example)).to eq(array)
       end
     end
   end
@@ -43,15 +44,15 @@ describe Bulky do
     let(:log) { Bulky.log_bulk_update(ids, updates) }
 
     it "creates a bulk update entry" do
-      log.should be_persisted
+      expect(log).to be_persisted
     end
 
     it "creates a bulk update entry with the given ids" do
-      log.ids.should eq(ids)
+      expect(log.ids).to eq(ids)
     end
 
     it "creates a bulk update entry with the given updates" do
-      log.updates.should eq(updates)
+      expect(log.updates).to eq(updates)
     end
   end
 

@@ -1,7 +1,5 @@
 class Bulky::UpdatesController < ApplicationController
 
-  helper_method :model
-
   def edit
   end
 
@@ -18,22 +16,22 @@ class Bulky::UpdatesController < ApplicationController
     redirect_to bulky_edit_path(model: params[:model]), notice: I18n.t('flash.notice.enqueue_update')
   end
 
+  def params
+    @params ||= delete_blank(super)
+  end
+
   private
 
   helper_method def model_name
     params.require(:model)
   end
 
-  def model
+  helper_method def model
     @model ||= model_name.classify.constantize
   end
   
   def ids
     Bulky.parse_ids(params[:ids])
-  end
-
-  def params
-    @params ||= delete_blank(super)
   end
 
   def delete_blank(hash)
