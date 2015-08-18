@@ -1,0 +1,6 @@
+test: &test
+  adapter: sqlite3
+  database: db/bulky_test.sqlite3
+
+development:
+  <<: *test
