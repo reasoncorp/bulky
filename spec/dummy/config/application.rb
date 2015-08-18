@@ -13,8 +13,17 @@ require "active_record/railtie"
 
 Bundler.require
 
+# controllers
 ApplicationController = Class.new(ActionController::Base) do
   protect_from_forgery with: :exception
+end
+
+# models
+class Account < ActiveRecord::Base
+  extend Bulky::Model
+  bulky :business, :contact, :last_contracted_on
+
+  validates :business, presence: true
 end
 
 require 'sqlite3'

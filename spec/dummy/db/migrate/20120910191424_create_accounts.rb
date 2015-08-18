@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer :age
       t.date :last_contact_on
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

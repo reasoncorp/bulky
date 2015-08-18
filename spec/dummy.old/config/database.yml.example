@@ -1,7 +1,0 @@
-test: &test
-  adapter: mysql2
-  password: some_password
-  database: bulky_test
-
-development:
-  <<: *test

@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20150817161700) do
 
+  create_table "accounts", force: :cascade do |t|
+    t.string   "business",        null: false
+    t.string   "contact"
+    t.integer  "age"
+    t.date     "last_contact_on"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "bulky_bulk_updates", force: :cascade do |t|
     t.text     "ids",             null: false
     t.text     "updates",         null: false
