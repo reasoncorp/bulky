@@ -10,11 +10,11 @@ In your Gemfile use one of the following
   # or
   gem 'bulky', github: 'tma1/bulky'
   # or in bash run
-  git submodule add git@github.com:tma1/bulky.git vendor/bulky
+  `git submodule add git@github.com:tma1/bulky.git vendor/bulky`
   # then add to your gemfile
   gem 'bulky', path: 'vendor/bulky'
   # users add a submodule (aka path...) need to run
-  git submodule init --update
+  `git submodule init --update`
 ```
 ```bash
 ```
