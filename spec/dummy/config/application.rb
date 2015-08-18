@@ -13,7 +13,9 @@ require "active_record/railtie"
 
 Bundler.require
 
-ApplicationController = Class.new(ActionController::Base)
+ApplicationController = Class.new(ActionController::Base) do
+  protect_from_forgery with: :exception
+end
 
 require 'sqlite3'
 require 'bulky'

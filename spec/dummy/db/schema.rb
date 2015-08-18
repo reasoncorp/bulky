@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817185056) do
+ActiveRecord::Schema.define(version: 20150817161700) do
 
   create_table "bulky_bulk_updates", force: :cascade do |t|
     t.text     "ids",             null: false
     t.text     "updates",         null: false
     t.integer  "initiated_by_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "bulky_bulk_updates", ["initiated_by_id"], name: "index_bulky_bulk_updates_on_initiated_by_id"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20150817185056) do
     t.text     "updatable_changes", null: false
     t.string   "error_message"
     t.text     "error_backtrace"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "bulky_updated_records", ["bulk_update_id"], name: "index_bulky_updated_records_on_bulk_update_id"

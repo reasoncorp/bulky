@@ -2,12 +2,14 @@
 ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../dummy/config/application.rb",  __FILE__)
+require "pry"
+binding.pry
 require "rails/test_help"
 require "rspec/rails"
 require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
-require "pry"
+
 
 Rails.backtrace_cleaner.remove_silencers!
 
