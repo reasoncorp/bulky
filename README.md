@@ -4,10 +4,21 @@
 
 ## Installation
 
-In your Gemfile
+In your Gemfile use one of the following
 ``` ruby
+  gem 'bulky', '~> 2.0.0'
+  # or
   gem 'bulky', github: 'tma1/bulky'
+  # or in bash run
+  git submodule add git@github.com:tma1/bulky.git vendor/bulky
+  # then add to your gemfile
+  gem 'bulky', path: 'vendor/bulky'
+  # users add a submodule (aka path...) need to run
+  git submodule init --update
 ```
+```bash
+```
+Then edit your 
 
 Then in your shell prompt
 ```bash
