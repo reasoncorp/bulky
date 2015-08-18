@@ -9,6 +9,10 @@ machine:
   ruby:
     version: 2.2.2
 
+database:
+  override:
+    - rake db:drop db:create db:migrate
+
 test:
   override:
     - bundle exec rspec --color spec --format progress
