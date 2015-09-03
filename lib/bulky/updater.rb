@@ -29,7 +29,7 @@ module Bulky
       log.error_backtrace = e.backtrace.join("\n")
       raise e
     ensure
-      log.save!
+      log.save! if log.updatable_changes.present?
     end
   end
 end
