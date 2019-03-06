@@ -6,6 +6,7 @@ jobs:
         environment:
           RACK_ENV:  test
           RAILS_ENV: test
+      - image: redis
     steps:
       - checkout
       - run: bundle check || bundle install --jobs=4
