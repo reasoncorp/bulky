@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.3.8-node
+        environment:
+          RACK_ENV:  test
+          RAILS_ENV: test
+      - image: redis
+    steps:
+      - checkout
+      - run: bundle check || bundle install --jobs=4
+      - run: rake db:drop db:create db:migrate
+      - run: bundle exec rspec
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
